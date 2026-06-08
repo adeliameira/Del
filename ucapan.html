@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 1st Anniversary! ❤️</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: sans-serif; background: linear-gradient(135deg, #ffe5ec, #ffc2d1); height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .container { width: 90%; max-width: 380px; height: 450px; position: relative; }
+        .card { position: absolute; width: 100%; height: 100%; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(255, 75, 110, 0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; transition: all 0.5s ease; cursor: pointer; border: 2px solid #ffb3c6; }
+        .card:not(.active) { opacity: 0; transform: scale(0.8) translateY(30px); pointer-events: none; }
+        .card.active { opacity: 1; transform: scale(1) translateY(0); z-index: 10; }
+        .character { font-size: 80px; margin-bottom: 20px; animation: bounce 2s infinite; }
+        h2 { color: #ff4d6d; margin-bottom: 15px; font-size: 24px; }
+        p { color: #555; font-size: 15px; line-height: 1.6; }
+        .hint { margin-top: 25px; font-size: 11px; color: #ff758f; font-weight: bold; letter-spacing: 1px; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .heart { position: fixed; color: #ff758f; font-size: 20px; top: -20px; pointer-events: none; animation: fall linear forwards; }
+        @keyframes fall { to { transform: translateY(105vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card active" onclick="nextCard()">
+            <div class="character">🧸</div>
+            <h2>Haloo Sayang!</h2>
+            <p>Gak kerasa ya, hari ini tepat 1 tahun kita bareng-bareng. Makasih banyak ya udah bertahan sama aku sejauh ini.</p>
+            <div class="hint">KLIK KARTUNYA YA ✨</div>
+        </div>
+        <div class="card" onclick="nextCard()">
+            <div class="character">🐰</div>
+            <h2>365 Hari Bersamamu</h2>
+            <p>Lewat semua tawa, ngambek-ngambek lucu, sampai obrolan deep talk kita, setiap detiknya berharga banget buat aku.</p>
+            <div class="hint">KLIK LAGI DONG... ❤️</div>
+        </div>
+        <div class="card" onclick="nextCard()">
+            <div class="character">🐱</div>
+            <h2>Kamu Itu Rumah</h2>
+            <p>Makasih selalu jadi tempat ternyaman buat aku pulang, yang selalu dengerin keluh kesah aku, dan selalu support aku.</p>
+            <div class="hint">MASIH ADA LAGI NIH 💌</div>
+        </div>
+        <div class="card" onclick="nextCard()">
+            <div class="character">🐼</div>
+            <h2>Maaf & Terima Kasih</h2>
+            <p>Maaf ya kalau kadang aku masih suka bikin kesal atau childish. Terima kasih karena kesabaran kamu yang seluas samudra.</p>
+            <div class="hint">TERAKHIR DARI AKU... 👑</div>
+        </div>
+        <div class="card" onclick="nextCard()">
+            <div class="character">💝</div>
+            <h2>Happy 1st Anniversary!</h2>
+            <p>Semoga kita makin dewasa dan makin kuat lewatin apa pun ke depannya. I love you more than words can say! 🥂✨</p>
+            <div class="hint">KLIK UNTUK ULANG 🥰</div>
+        </div>
+    </div>
+    <script>
+        let idx = 0; const cards = document.querySelectorAll('.card');
+        function nextCard() {
+            cards[idx].classList.remove('active');
+            idx = (idx + 1) % cards.length;
+            cards[idx].classList.add('active');
+            for(let i=0; i<10; i++) {
+                const h = document.createElement('div'); h.classList.add('heart'); h.innerText = '❤️';
+                h.style.left = Math.random() * 100 + 'vw'; h.style.animationDuration = Math.random() * 2 + 2 + 's';
+                document.body.appendChild(h); setTimeout(() => h.remove(), 4000);
+            }
+        }
+    </script>
+</body>
+</html>
